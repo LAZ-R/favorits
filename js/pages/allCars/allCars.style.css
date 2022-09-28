@@ -1,0 +1,89 @@
+@import url("../../../css/root.css");
+
+/* Put here any 'allCars.html' specific css */
+
+.brands-list {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.brand-DAO-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 75px;
+}
+
+.brand-name-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 75px;
+    height: 75px;
+    background-color: white;
+}
+
+.car-tile {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 150px;
+    background-clip: border-box;
+    background-position: center;
+    background-size: cover;
+}
+
+.blank-bottom {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    min-height: 0%;
+    height: 100%;
+    background-color: white;
+}
+
+/* Animations */
+
+.open-brand {
+    animation: openBrand .25s ease-in-out forwards;
+}
+
+@keyframes openBrand {
+    from {
+      height: 75px;
+    }
+    to {
+      height: var(--h);
+    }
+}
+
+.close-brand {
+    animation: closeBrand .25s ease-in-out forwards;
+}
+
+@keyframes closeBrand {
+    from {
+      height: var(--h);
+    }
+    to {
+      height: 75px;
+    }
+}

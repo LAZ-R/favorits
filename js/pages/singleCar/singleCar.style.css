@@ -1,0 +1,45 @@
+@import url("../../../css/root.css");
+
+/* Put here any 'singleCar.html' specific css */
+
+.single-car-page {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.single-car-brand, .single-car-model, .single-car-year {
+box-sizing: border-box;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: fit-content;
+padding: 10px var(--horizontal-padding) 10px var(--horizontal-padding);
+}
+
+.single-car-brand {
+  background-color: var(--primary);
+  color: white;
+  font-size: 25px;
+  font-family: 'Roboto-Bold';
+}
+
+.single-car-model {
+  font-size: 25px;
+  font-family: 'Roboto-Bold';
+  padding-bottom: 5px;
+}
+
+.single-car-year {
+  padding-top: 5px;
+}
+
+.car-picture {
+  width: 100%;
+}

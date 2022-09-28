@@ -1,0 +1,100 @@
+@import url("../../../css/root.css");
+
+/* Put here any 'index.html' specific css */
+
+.page-section {
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    min-width: 100%;
+    padding: 20px 20px 20px 20px;
+}
+
+.section1 {
+    height: 45%;
+    justify-content: center;
+    background-image: url('https://thegoodlife.thegoodhub.com/wp-content/thumbnails/uploads/sites/2/2020/04/ventes-encheres-automobiles-voitures-luxe-collection-2-77-tt-width-1872-height-1200-fill-0-crop-0-bgcolor-eeeeee.jpg');
+    background-clip: border-box;
+    background-position: center;
+    background-size: cover;
+    padding: 0;
+}
+
+.black-filter {
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #000000d0;
+    color: white;
+}
+
+.section2 {
+    flex-direction: row;
+    height: 25%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    padding: 0;
+}
+
+.elements-div {
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: fit-content;
+    min-width: 100%;
+    padding: 0;
+}
+
+.index-tile {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    min-width: 100%;
+    padding: 0;
+    /* background-image: url(' + path + '); */
+    background-clip: border-box;
+    background-position: center;
+    background-size: cover;
+}
+
+.index-tile-cars-infos {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-width: 100%;
+}
+
+.section3 {
+    height: 30%;
+    overflow-y: scroll;
+    padding: 0;
+}
+
+.add-new-button {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    min-width: 100%;
+    background-color: #ffffffb6;
+    padding: 0 var(--horizontal-padding) 0 var(--horizontal-padding);
+}
