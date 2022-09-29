@@ -188,6 +188,8 @@ form {
     width: 100%;
     padding: 10px var(--horizontal-padding) 10px var(--horizontal-padding);
     font-size: 25px;
+    font-family: 'Roboto-Medium';
+    color: var(--primary);
 }
 
 .form-row-group {
@@ -210,6 +212,11 @@ form {
     padding: 10px var(--horizontal-padding) 10px var(--horizontal-padding);
 }
 
+.form-row > label {
+    min-width: 30%;
+    color: var(--primary);
+}
+
 .form-submit-row {
     box-sizing: border-box;
     display: flex;
@@ -218,6 +225,57 @@ form {
     height: 15%;
     width: 100%;
     padding: 10px var(--horizontal-padding) 10px var(--horizontal-padding);
+}
+
+.picture-uploader {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start !important;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.picture-uploader > input[type='text'] {
+    margin-bottom: 10px;
+    width: 80%;
+}
+
+#addPictureButton {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    min-width: 50px;
+    min-height: 50px;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+/* Inputs */
+
+input[type=text], input[type=number], select {
+    border: 1px solid var(--primary);
+    background-color: white;
+    padding: 10px 15px 10px 15px;
+    border-radius: 0;
+    margin: 0 0;
+    flex-wrap: wrap;
+    color: var(--primary);
+    width: 100%;
+    font-family: 'Roboto-Medium';
+    font-size: 18px;
+}
+
+input[type=number] {
+    text-align: end;
+}
+
+select {
 }
 
 /* ==========================

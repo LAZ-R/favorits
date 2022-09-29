@@ -4,7 +4,7 @@ import * as UTILS from '../../services/utils.service.js';
 import * as HEADER from '../../components/header/header.component.js'
 import * as FOOTER from '../../components/footer/footer.component.js'
 
-const pageTitle = 'Test CSS';
+const pageTitle = 'Favorits';
 
 const renderView = () => {
 
@@ -24,7 +24,7 @@ const renderView = () => {
     const filter = document.createElement('button');
     filter.setAttribute('class', 'black-filter');
     filter.innerHTML =
-            `ALL CARS`; 
+            `Collection`; 
     filter.onclick = () => {
         window.location = './allCars.html'
     }
@@ -70,44 +70,70 @@ const renderView = () => {
         const tile = document.createElement('div');
         tile.setAttribute('class', 'index-tile');
 
-        const filter = document.createElement('button');
-        filter.setAttribute('class', 'black-filter');
+        const tileCarsInfos = document.createElement('div');
+        tileCarsInfos.setAttribute('id', 'black-tileCarsInfos');
+        tileCarsInfos.setAttribute('class', 'index-tile-cars-infos')
 
-        tile.appendChild(filter)
 
-        filter.innerHTML =
-            `<div class="index-tile-cars-infos">
+        tileCarsInfos.innerHTML = `
             <div>
-            <span>${SERVICE_STORAGE.getBrandNameFromId(car.brandId)}<br>${car.model}</span>
+                <span>${SERVICE_STORAGE.getBrandNameFromId(car.brandId)}<br>${car.model}</span>
             </div>
-            </div>`;
+        `;
+
+        tile.appendChild(tileCarsInfos);
+
         tile.style.backgroundImage = `url(${car.images[0]})`;
         tile.onclick = () => {
             window.location = `./singleCar.html?carId=${car.id}`;
         }
-        UTILS.handleSwipe(tile, 111, onLeftSwipe, onRightSwipe);
+        UTILS.handleSwipe(tile, 50, onLeftSwipe, onRightSwipe);
+
         elementsDiv.appendChild(tile);
+        if (car.images.length > 1) {
+            let index = 0;
+            const changeImage = () => {
+                index += 1;
+                if (index == car.images.length) {
+                    index = 0;
+                }
+                tileCarsInfos.style.backgroundColor = '#000000ff';
+                setTimeout(() => {
+                    tile.style.backgroundImage = `url(${car.images[index]})`;
+                    tileCarsInfos.style.backgroundColor = '#000000d0';
+                    setTimeout(() => {
+                        changeImage();
+                    }, 4000);
+                }, 400);
+                
+                
+            }
+            setTimeout(() => {
+                changeImage();
+            }, 2000);
+            
+        }
     });
     document.getElementById('main').appendChild(page2);
 
     /* --------------------------------------------------------------------- */
 
     const page3 = document.createElement('div');
-    page3.setAttribute('id', 'indexSection2');
+    page3.setAttribute('id', 'indexSection3');
     page3.setAttribute('class', 'page-section section3');
 
     const addNewCarButton = document.createElement('button');
     addNewCarButton.setAttribute('id', 'addNewCarButton');
     addNewCarButton.setAttribute('class', 'add-new-button new-car');
     addNewCarButton.onclick = () => window.location = './newCar.html';
-    addNewCarButton.innerHTML = `ADD NEW CAR`;
+    addNewCarButton.innerHTML = `<span>Ajouter un modèle</span>`;
     page3.appendChild(addNewCarButton);
 
     const addNewBrandButton = document.createElement('button');
     addNewBrandButton.setAttribute('id', 'addNewBrandButton');
-    addNewBrandButton.setAttribute('class', 'add-new-button new-Brand');
+    addNewBrandButton.setAttribute('class', 'add-new-button new-brand');
     addNewBrandButton.onclick = () => window.location = './newBrand.html';
-    addNewBrandButton.innerHTML = `ADD NEW BRAND`;
+    addNewBrandButton.innerHTML = `<span>Ajouter une marque</span>`;
     page3.appendChild(addNewBrandButton);
     
     document.getElementById('main').appendChild(page3);

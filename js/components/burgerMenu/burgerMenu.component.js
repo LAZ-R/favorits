@@ -36,8 +36,8 @@ export const renderView = () => {
     burgerMenu.setAttribute('id', 'burgerMenu');
     burgerMenu.setAttribute('class', 'burger-menu');
     burgerMenu.innerHTML = `
-    <a href="./" class="burger-menu-link">Home</a>
-    <a href="./about.html" class="burger-menu-link">About</a>
+    <a href="./" class="burger-menu-link">Accueil</a>
+    <a href="./about.html" class="burger-menu-link">À propos</a>
     `;
 
     document.getElementById('body').appendChild(burgerMenu);

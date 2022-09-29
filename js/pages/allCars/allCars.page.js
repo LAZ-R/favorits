@@ -6,6 +6,7 @@ import * as FOOTER from '../../components/footer/footer.component.js'
 const pageTitle = 'Toutes les voitures';
 
 const renderView = () => {
+    SERVICE_PWA.setHTMLTitle(pageTitle);
 
     const brandsList = document.createElement('div');
     brandsList.setAttribute('id', `brandsList`);
@@ -41,7 +42,7 @@ const renderView = () => {
         return 0;
       }
 
-    ListByBrand.sort(compareBrandNames).forEach(brandDAO => {
+    ListByBrand.sort(compareBrandNames).forEach((brandDAO, index) => {
         const brandDAOContainer = document.createElement('div');
         brandDAOContainer.setAttribute('id', `brandDAOContainer${brandDAO.id}`);
         brandDAOContainer.setAttribute('class', 'brand-DAO-container');
@@ -51,7 +52,7 @@ const renderView = () => {
         brandNameContainer.setAttribute('class', 'brand-name-container');
         brandNameContainer.innerHTML = `<span class="brand-name">${brandDAO.brandName}</span>`;
         brandNameContainer.onclick = () => {
-            const height = 75 + (brandDAO.carsFromBrand.length * 150);
+            const height = 75 + (brandDAO.carsFromBrand.length * 175);
             brandDAOContainer.style.setProperty('--h', `${height}px`);
             if (brandDAOContainer.classList.contains('open-brand')) {
                 brandDAOContainer.classList.remove('open-brand');
@@ -65,6 +66,11 @@ const renderView = () => {
                 }
                 brandDAOContainer.classList.remove('close-brand');
                 brandDAOContainer.classList.add('open-brand');
+                brandsList.scrollTo({
+                    top: index * 75,
+                    left: 0,
+                    behavior: 'smooth'
+                  });
             }
         }
 
@@ -91,7 +97,10 @@ const renderView = () => {
             carTile.appendChild(filter);
 
             carTile.style.backgroundImage = `url(${car.images[0]})`;
-            filter.innerHTML = car.model;
+            filter.innerHTML = `
+                <span>${car.model}</span>
+                <span><i>(${car.year})</i></span>
+            `;
             filter.onclick = () => {
                 window.location = `./singleCar.html?carId=${car.id}`;
             }

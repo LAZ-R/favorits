@@ -42,10 +42,21 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 150px;
+    min-height: 175px;
     background-clip: border-box;
     background-position: center;
     background-size: cover;
+}
+
+.black-filter:hover {
+    background-color: #000000b6 !important;
+}
+.black-filter:focus {
+    background-color: #000000b6 !important;
+}
+
+span > i {
+    font-size: 15px;
 }
 
 .blank-bottom {
@@ -58,6 +69,7 @@
     min-height: 0%;
     height: 100%;
     background-color: white;
+    z-index: 10;
 }
 
 /* Animations */

@@ -2,7 +2,7 @@ import * as SERVICE_PWA from '../../services/pwa.service.js';
 import * as HEADER from '../../components/header/header.component.js'
 import * as FOOTER from '../../components/footer/footer.component.js'
 
-const pageTitle = 'About';
+const pageTitle = 'À propos';
 
 const renderView = () => {
 
@@ -13,7 +13,7 @@ const renderView = () => {
     topPart.setAttribute('class', 'about-category top-part');
     topPart.innerHTML =
     `<div class="about-sub-category about-app-infos">
-        <span class="about-sub-category about-app-name">Tests CSS</span>
+        <span class="about-sub-category about-app-name">Favorits</span>
         <span class="about-sub-category about-app-version">v${SERVICE_PWA.getAppVersionNumber()}</span>
     </div>`;
     
@@ -27,8 +27,8 @@ const renderView = () => {
         <span>Warning</span>
     </div>
     <div class="about-sub-category about-warning-text">
-        <p>It is important to notice than this app uses your device local storage to persist data.<br>
-        All this app data will be lost if you clean your cache.</p>
+        <span>It is important to notice than this app uses your device local storage to persist data.<br>
+        All this app data will be lost if you clean your cache.</span>
     </div>`;
     
     document.getElementById('main').appendChild(middlePart);

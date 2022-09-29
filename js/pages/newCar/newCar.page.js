@@ -3,7 +3,7 @@ import * as SERVICE_STORAGE from '../../services/storage.service.js';
 import * as HEADER from '../../components/header/header.component.js'
 import * as FOOTER from '../../components/footer/footer.component.js'
 
-const pageTitle = 'Nouvelle voiture';
+const pageTitle = 'Nouveau modèle';
 
 let picturesNumber = 0;
 
@@ -25,7 +25,7 @@ const renderView = () => {
                         <select id="carBrand" name="carBrand"></select>
                     </div>
                     <div class="form-row" id="carNameRow">
-                        <label for="carName"><b>Nom du modèle</b></label>
+                        <label for="carName"><b>Modèle</b></label>
                         <input id="carName" name="carName" type="text" />
                     </div>
                     <div class="form-row" id="carYearRow">
@@ -46,8 +46,18 @@ const renderView = () => {
         
         document.getElementById('main').appendChild(form);
 
+        const compareBrandNames = (a, b) => {
+            if ( a.name < b.name ){
+              return -1;
+            }
+            if ( a.name > b.name ){
+              return 1;
+            }
+            return 0;
+          }
+
         const brands = SERVICE_STORAGE.getBrands();
-        brands.forEach(brand => {
+        brands.sort(compareBrandNames).forEach(brand => {
             const option = document.createElement('option');
             option.value = brand.id;
             option.innerHTML = brand.name;

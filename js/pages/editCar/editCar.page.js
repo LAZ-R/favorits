@@ -29,8 +29,6 @@ const renderView = () => {
             }
         }
 
-        //picturesNumber = imagesArray.length;
-
         SERVICE_PWA.setHTMLTitle(pageTitle);
 
         const form = document.createElement('form');
@@ -46,7 +44,7 @@ const renderView = () => {
                         <select id="carBrand" name="carBrand"></select>
                     </div>
                     <div class="form-row" id="carNameRow">
-                        <label for="carName"><b>Nom du modèle</b></label>
+                        <label for="carName"><b>Modèle</b></label>
                         <input id="carName" name="carName" type="text" value="${carName}" />
                     </div>
                     <div class="form-row" id="carYearRow">
@@ -67,8 +65,18 @@ const renderView = () => {
         
         document.getElementById('main').appendChild(form);
 
+        const compareBrandNames = (a, b) => {
+            if ( a.name < b.name ){
+              return -1;
+            }
+            if ( a.name > b.name ){
+              return 1;
+            }
+            return 0;
+          }
+
         const brands = SERVICE_STORAGE.getBrands();
-        brands.forEach(brand => {
+        brands.sort(compareBrandNames).forEach(brand => {
             const option = document.createElement('option');
             option.value = brand.id;
             option.innerHTML = brand.name;
