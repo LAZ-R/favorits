@@ -3,6 +3,8 @@
 @import url("./index/index.style.css");
 @import url("./newBrand/newBrand.style.css");
 @import url("./newCar/newCar.style.css");
+@import url("./editCar/editCar.style.css");
 @import url("./allCars/allCars.style.css");
+@import url("./allBrands/allBrands.style.css");
 @import url("./singleCar/singleCar.style.css");
 @import url("./about/about.style.css");

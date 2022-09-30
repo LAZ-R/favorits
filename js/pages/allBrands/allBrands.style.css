@@ -1,0 +1,57 @@
+@import url("../../../css/root.css");
+
+/* Put here any 'allBrands.html' specific css */
+
+.all-brands-list {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 0 var(--horizontal-padding) 0 var(--horizontal-padding);
+}
+
+.brand-tile {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 75px;
+    border-bottom: 1px solid var(--primary);
+    padding: 0;
+}
+
+.brand-tile-name-area {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    color: var(--primary);
+    font-family: 'Roboto-Medium';
+}
+
+.brand-buttons-area {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.edit-brand-button {
+    color: var(--primary);
+    background-color: white;
+    border: 1px solid var(--primary);
+}
+.delete-brand-button {
+    margin-left: 10px;
+    background-color: var(--lazr-red);
+    color: white;
+}

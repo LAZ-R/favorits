@@ -1,3 +1,22 @@
 @import url("../../../css/root.css");
 
 /* Put here any 'newBrand.html' specific css */
+
+.edit-brands-button-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    height: 10%;
+    padding: 0 var(--horizontal-padding) 0 var(--horizontal-padding);
+}
+
+.edit-brands-button {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    background-color: var(--gray-10);
+}

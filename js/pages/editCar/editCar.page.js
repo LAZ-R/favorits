@@ -18,6 +18,9 @@ const renderView = () => {
 
 
     if (isEditing == "true") {
+
+        SERVICE_PWA.setHTMLTitle(pageTitle);
+        
         let imagesArray = [];
 
         for (let index = 1; index <= 100; index++) {
@@ -29,10 +32,28 @@ const renderView = () => {
             }
         }
 
-        SERVICE_PWA.setHTMLTitle(pageTitle);
+        const deleteButtonContainer = document.createElement('div');
+        deleteButtonContainer.setAttribute('id', 'deleteButtonContainer');
+        deleteButtonContainer.setAttribute('class', 'delete-button-container');
+
+        const deleteButton = document.createElement('button');
+        deleteButton.setAttribute('id', 'deleteButton');
+        deleteButton.setAttribute('class', 'delete-button');
+        deleteButton.innerHTML = `Supprimer`;
+        deleteButton.onclick = () => {
+            if (window.confirm("Voulez-vous vraiment supprimer ce modèle ?\nCette action est irréversible.")) {
+                SERVICE_STORAGE.deleteCar(carId);
+                window.location = './';
+            };
+        }
+        deleteButtonContainer.appendChild(deleteButton);
+        document.getElementById('main').appendChild(deleteButtonContainer);
 
         const form = document.createElement('form');
             form.innerHTML = `
+                <div class="form-row" id="carIdRow" style="display:none;">
+                    <button class="">Supprimer</button>
+                </div>
                 <span class="form-title">${pageTitle}</span>
                 <div class="form-row-group">
                     <div class="form-row" id="carIdRow" style="display:none;">

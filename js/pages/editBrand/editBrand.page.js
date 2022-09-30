@@ -7,53 +7,43 @@ const pageTitle = 'Nouvelle marque';
 
 const renderView = () => {
 
+    const isEditing = new URLSearchParams(window.location.search).get('isEditing');
+    const brandId = new URLSearchParams(window.location.search).get('brandId');
     const brandName = new URLSearchParams(window.location.search).get('brandName');
 
-    if (brandName == null) {
+    if (isEditing == "true") {
         SERVICE_PWA.setHTMLTitle(pageTitle);
 
         const form = document.createElement('form');
             form.innerHTML = `
                 <span class="form-title">${pageTitle}</span>
                 <div class="form-row-group">
+                    <div class="form-row" id="brandIdRow" style="display:none;">
+                        <label for="brandId"><b>ID</b></label>
+                        <input id="brandId" name="brandId" value="${brandId}" />
+                    </div>
                     <div class="form-row" id="typeSelectorRow">
                         <label for="brandName"><b>Nom de la marque</b></label>
-                        <input id="brandName" name="brandName" type="text" />
+                        <input id="brandName" name="brandName" type="text" value="${brandName}" />
                     </div>
                 </div>
                 <div class="form-submit-row">
-                    <input type="submit" value="Ajouter" class="primary-button">
+                    <input type="submit" value="Modifier" class="primary-button">
                 </div>
             `;
         
         document.getElementById('main').appendChild(form);
 
-        const editBrandsButtonContainer = document.createElement('div');
-        editBrandsButtonContainer.setAttribute('id', 'editBrandsButtonContainer');
-        editBrandsButtonContainer.setAttribute('class', 'edit-brands-button-container');
-
-        const editBrandsButton = document.createElement('button');
-        editBrandsButton.setAttribute('id', 'editBrandsButton');
-        editBrandsButton.setAttribute('class', 'edit-brands-button');
-        editBrandsButton.innerHTML = `Gérer les marques`;
-        editBrandsButton.onclick = () => {
-            window.location = './allBrands.html';
-        }
-        editBrandsButtonContainer.appendChild(editBrandsButton);
-        document.getElementById('main').appendChild(editBrandsButtonContainer);
-
     } else {
-        console.log('adding new brand');
         const newBrandId = SERVICE_STORAGE.getBrandNextId();
-        console.log(`next id : ${newBrandId}`);
         
-        const newBrand = {
-            id: newBrandId,
+        const editedBrand = {
+            id: brandId,
             name: brandName
         };
 
-        SERVICE_STORAGE.addBrand(newBrand);
-        window.location = './';
+        SERVICE_STORAGE.editBrand(editedBrand);
+        window.location = './allBrands.html';
     }
 
     

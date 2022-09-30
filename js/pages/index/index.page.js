@@ -4,6 +4,9 @@ import * as UTILS from '../../services/utils.service.js';
 import * as HEADER from '../../components/header/header.component.js'
 import * as FOOTER from '../../components/footer/footer.component.js'
 
+
+import * as COMPONENT_CAR_TILE from '../../components/carTile/carTile.component.js'
+
 const pageTitle = 'Favorits';
 
 const renderView = () => {
@@ -45,7 +48,7 @@ const renderView = () => {
      */
     function onLeftSwipe() {
         const maxScroll = document.getElementById('elementsDiv').scrollWidth - window.innerWidth;
-        const newScroll = currentScroll + window.innerWidth <= maxScroll ? (currentScroll + window.innerWidth) : maxScroll;
+        const newScroll = currentScroll + window.innerWidth <= maxScroll ? (currentScroll + window.innerWidth) : 0;
         document.getElementById('indexSection2').scrollLeft = newScroll;
         currentScroll = newScroll;
     }
@@ -54,7 +57,8 @@ const renderView = () => {
      * Traitement en cas de swipe à droite
      */
     function onRightSwipe() {
-        const newScroll = currentScroll - window.innerWidth >= 0 ? currentScroll - window.innerWidth : 0;
+        const maxScroll = document.getElementById('elementsDiv').scrollWidth - window.innerWidth;
+        const newScroll = currentScroll - window.innerWidth >= 0 ? currentScroll - window.innerWidth : maxScroll;
         document.getElementById('indexSection2').scrollLeft = newScroll;
         currentScroll = newScroll;
     }
@@ -62,59 +66,26 @@ const renderView = () => {
     const elementsDiv = document.createElement('div');
     elementsDiv.setAttribute('id', 'elementsDiv');
     elementsDiv.setAttribute('class', 'elements-div');  
-    page2.appendChild(elementsDiv); 
+    page2.appendChild(elementsDiv);
 
-    
-
-    user.cars.reverse().forEach(car => {
-        const tile = document.createElement('div');
-        tile.setAttribute('class', 'index-tile');
-
-        const tileCarsInfos = document.createElement('div');
-        tileCarsInfos.setAttribute('id', 'black-tileCarsInfos');
-        tileCarsInfos.setAttribute('class', 'index-tile-cars-infos')
-
-
-        tileCarsInfos.innerHTML = `
-            <div>
-                <span>${SERVICE_STORAGE.getBrandNameFromId(car.brandId)}<br>${car.model}</span>
-            </div>
-        `;
-
-        tile.appendChild(tileCarsInfos);
-
-        tile.style.backgroundImage = `url(${car.images[0]})`;
-        tile.onclick = () => {
-            window.location = `./singleCar.html?carId=${car.id}`;
-        }
-        UTILS.handleSwipe(tile, 50, onLeftSwipe, onRightSwipe);
-
-        elementsDiv.appendChild(tile);
-        if (car.images.length > 1) {
-            let index = 0;
-            const changeImage = () => {
-                index += 1;
-                if (index == car.images.length) {
-                    index = 0;
-                }
-                tileCarsInfos.style.backgroundColor = '#000000ff';
-                setTimeout(() => {
-                    tile.style.backgroundImage = `url(${car.images[index]})`;
-                    tileCarsInfos.style.backgroundColor = '#000000d0';
-                    setTimeout(() => {
-                        changeImage();
-                    }, 4000);
-                }, 400);
-                
-                
-            }
-            setTimeout(() => {
-                changeImage();
-            }, 2000);
-            
+    user.cars.reverse().forEach((car, index) => {
+        if (index < 5) {
+            const catTile = COMPONENT_CAR_TILE.renderView(car, true, true, false, true, 5000);
+            UTILS.handleSwipe(catTile, 50, onLeftSwipe, onRightSwipe);
+            elementsDiv.appendChild(catTile);
         }
     });
     document.getElementById('main').appendChild(page2);
+
+    const autoNextSlide = (interval) =>  {
+        onLeftSwipe();
+        setTimeout(() => {
+            autoNextSlide(interval);
+        }, interval);
+    }
+    setTimeout(() => {
+        autoNextSlide(10800);
+    }, 10800);
 
     /* --------------------------------------------------------------------- */
 

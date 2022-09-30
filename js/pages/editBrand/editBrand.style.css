@@ -1,8 +1,8 @@
 @import url("../../../css/root.css");
 
-/* Put here any 'editCar.html' specific css */
+/* Put here any 'editBrand.html' specific css */
 
-.delete-button-container {
+.edit-brands-button-container {
     box-sizing: border-box;
     display: flex;
     justify-content: center;
@@ -12,12 +12,11 @@
     padding: 0 var(--horizontal-padding) 0 var(--horizontal-padding);
 }
 
-.delete-button {
+.edit-brands-button {
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
     min-width: 100%;
-    background-color: var(--lazr-red);
-    color: white;
+    background-color: var(--gray-10);
 }

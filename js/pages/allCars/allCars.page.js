@@ -2,6 +2,7 @@ import * as SERVICE_PWA from '../../services/pwa.service.js';
 import * as SERVICE_STORAGE from '../../services/storage.service.js';
 import * as HEADER from '../../components/header/header.component.js'
 import * as FOOTER from '../../components/footer/footer.component.js'
+import * as COMPONENT_CAR_TILE from '../../components/carTile/carTile.component.js'
 
 const pageTitle = 'Toutes les voitures';
 
@@ -87,25 +88,11 @@ const renderView = () => {
           }
 
         brandDAO.carsFromBrand.sort(compareCarYears).forEach(car => {
-            const carTile = document.createElement('div');
-            carTile.setAttribute('id', `carTile${car.id}`);
-            carTile.setAttribute('class', 'car-tile');
-
-            const filter = document.createElement('button');
-            filter.setAttribute('class', 'black-filter');
-
-            carTile.appendChild(filter);
-
-            carTile.style.backgroundImage = `url(${car.images[0]})`;
-            filter.innerHTML = `
-                <span>${car.model}</span>
-                <span><i>(${car.year})</i></span>
-            `;
-            filter.onclick = () => {
-                window.location = `./singleCar.html?carId=${car.id}`;
-            }
-
-            brandDAOContainer.appendChild(carTile);
+            const carTileContainer = document.createElement('div');
+            carTileContainer.setAttribute('class', 'car-tile-container');
+            const catTile = COMPONENT_CAR_TILE.renderView(car, false, true, true, false, 5000);
+            carTileContainer.appendChild(catTile);
+            brandDAOContainer.appendChild(carTileContainer);
         });
 
         brandsList.appendChild(brandDAOContainer);

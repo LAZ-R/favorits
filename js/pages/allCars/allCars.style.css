@@ -35,17 +35,13 @@
     background-color: white;
 }
 
-.car-tile {
+.car-tile-container {
     box-sizing: border-box;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     min-height: 175px;
-    background-clip: border-box;
-    background-position: center;
-    background-size: cover;
 }
 
 .black-filter:hover {
@@ -55,9 +51,7 @@
     background-color: #000000b6 !important;
 }
 
-span > i {
-    font-size: 15px;
-}
+
 
 .blank-bottom {
     box-sizing: border-box;

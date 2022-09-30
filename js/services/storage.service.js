@@ -46,6 +46,45 @@ export const addBrand = (newBrand) => {
     user.brands = tmpArray;
     setUser(user);
 }
+export const editBrand = (editedBrand) => {
+    let user = getUser();
+    let tmpArray = [];
+    user.brands.forEach(brand => {
+        tmpArray.push(brand);
+    });
+    let indexToModify = 0;
+    tmpArray.forEach((brand,  index) => {
+        if (brand.id == editedBrand.id) {
+            indexToModify = index;
+        }
+    });
+    tmpArray.splice(indexToModify, 1);
+    tmpArray.push(editedBrand);
+    user.brands = tmpArray;
+    setUser(user);
+}
+export const deleteBrand = (brandId) => {
+    let user = getUser();
+    let tmpArray = [];
+    user.brands.forEach(brand => {
+        tmpArray.push(brand);
+    });
+    let indexToModify = 0;
+    tmpArray.forEach((brand,  index) => {
+        if (brand.id == brandId) {
+            indexToModify = index;
+        }
+    });
+    tmpArray.splice(indexToModify, 1);
+    user.brands = tmpArray;
+    setUser(user);
+
+    user.cars.forEach(car => {
+        if (car.brandId == brandId) {
+            deleteCar(car.id);
+        }
+    });
+}
 export const getBrandNameFromId = (id) => {
     let name = 'unknown';
     getUser().brands.forEach(brand => {
@@ -92,14 +131,24 @@ export const editCar = (editedCar) => {
             indexToModify = index;
         }
     });
-    console.log(`
-    tmpArray car to modify : ${tmpArray[indexToModify].model}
-    `);
     tmpArray.splice(indexToModify, 1);
     tmpArray.push(editedCar);
-    console.log(`
-    modified tmpArray car : ${tmpArray[tmpArray.length - 1].model}
-    `);
+    user.cars = tmpArray;
+    setUser(user);
+}
+export const deleteCar = (carId) => {
+    let user = getUser();
+    let tmpArray = [];
+    user.cars.forEach(car => {
+        tmpArray.push(car);
+    });
+    let indexToModify = 0;
+    tmpArray.forEach((car,  index) => {
+        if (car.id == carId) {
+            indexToModify = index;
+        }
+    });
+    tmpArray.splice(indexToModify, 1);
     user.cars = tmpArray;
     setUser(user);
 }
