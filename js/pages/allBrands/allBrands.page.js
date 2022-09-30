@@ -54,7 +54,7 @@ const renderView = () => {
       deleteBrandButton.setAttribute('class', 'delete-brand-button');
       deleteBrandButton.innerHTML = `delete`;
       deleteBrandButton.onclick = () => {
-        if (window.confirm("Voulez-vous vraiment supprimer cette marque ?\nCela supprimera également tous les modèles associés à cette marque.\nCette action est irréversible.")) {
+        if (window.confirm(`Voulez-vous vraiment supprimer la marque "${brand.name}" ?\nCela supprimera également tous les modèles associés à cette marque.\nCette action est irréversible.`)) {
           SERVICE_STORAGE.deleteBrand(brand.id);
           window.location = `./allBrands.html`;
         };
