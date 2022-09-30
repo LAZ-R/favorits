@@ -4,5 +4,5 @@ export const MAX_SCREEN_SIZE = {
     Laptop: 1919
 }
 
-export const VERSION_NUMBER = '0.0.4';
-// v 0.0.4 : ajour nom marque dans alert de suppression + hauteur brand tile sur all brands
+export const VERSION_NUMBER = '0.0.5';
+// v 0.0.5 : hauteur brand tile sur all brands + gestion overflow hidden + fix du allCars

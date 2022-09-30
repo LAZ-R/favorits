@@ -20,7 +20,8 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 75px;
+    min-height: 75px;
+    overflow: hidden;
 }
 
 .brand-name-container {
@@ -74,10 +75,10 @@
 
 @keyframes openBrand {
     from {
-      height: 75px;
+      min-height: 75px;
     }
     to {
-      height: var(--h);
+      min-height: var(--h);
     }
 }
 
@@ -87,9 +88,9 @@
 
 @keyframes closeBrand {
     from {
-      height: var(--h);
+      min-height: var(--h);
     }
     to {
-      height: 75px;
+      min-height: 75px;
     }
 }

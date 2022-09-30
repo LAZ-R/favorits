@@ -100,10 +100,10 @@ const renderView = () => {
         
 
     });
-    const blankBottom = document.createElement('div');
+    /* const blankBottom = document.createElement('div');
     blankBottom.setAttribute('id', `blankBottom`);
     blankBottom.setAttribute('class', 'blank-bottom');
-    brandsList.appendChild(blankBottom);
+    brandsList.appendChild(blankBottom); */
     
     document.getElementById('main').appendChild(brandsList);
 
